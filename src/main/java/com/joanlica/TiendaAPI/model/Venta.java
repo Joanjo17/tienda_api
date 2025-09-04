@@ -18,7 +18,7 @@ public class Venta {
     private Long codigo_venta;
 
     @Column(nullable = false)
-    private LocalDate fecha_venta;
+    private LocalDate fechaVenta;
 
     @Column(nullable = false)
     private Double total;

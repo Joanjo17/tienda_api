@@ -22,5 +22,5 @@ public class Producto {
     @Column(nullable = false)
     Double costo;
     @Column(nullable = false)
-    Double cantidad_disponible;
+    Double cantidadDisponible;
 }

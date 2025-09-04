@@ -56,7 +56,7 @@ public class ProductoService implements IProductoService{
         producto.setNombre(productoNuevo.nombre());
         producto.setMarca(productoNuevo.marca());
         producto.setCosto(productoNuevo.costo());
-        producto.setCantidad_disponible(productoNuevo.cantidad_disponible());
+        producto.setCantidadDisponible(productoNuevo.cantidad_disponible());
 
         productoRepository.save(producto);
 
@@ -65,6 +65,6 @@ public class ProductoService implements IProductoService{
 
     @Override
     public List<ProductoResponseDto> listarProductosBajosStock(Double cantidad) {
-        return ProductoMapper.toDtoList(productoRepository.findByCantidad_disponibleLessThan(cantidad));
+        return ProductoMapper.toDtoList(productoRepository.findByCantidadDisponibleLessThan(cantidad));
     }
 }

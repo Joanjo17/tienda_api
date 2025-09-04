@@ -14,13 +14,13 @@ public class ProductoMapper{
         producto.setNombre(productoNuevo.nombre());
         producto.setMarca(productoNuevo.marca());
         producto.setCosto(productoNuevo.costo());
-        producto.setCantidad_disponible(productoNuevo.cantidad_disponible());
+        producto.setCantidadDisponible(productoNuevo.cantidad_disponible());
         return producto;
     }
 
     public static ProductoResponseDto toDto(Producto producto){
         return new ProductoResponseDto(producto.getCodigo_producto(),
-                producto.getNombre(),producto.getMarca(),producto.getCosto(),producto.getCantidad_disponible());
+                producto.getNombre(),producto.getMarca(),producto.getCosto(),producto.getCantidadDisponible());
     }
 
     public static List<ProductoResponseDto> toDtoList(List<Producto> productos){
