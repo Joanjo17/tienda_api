@@ -1,9 +1,7 @@
 package com.joanlica.TiendaAPI.controller;
 
-import com.joanlica.TiendaAPI.dto.ClienteRequestDto;
-import com.joanlica.TiendaAPI.dto.ClienteResponseDto;
-import com.joanlica.TiendaAPI.dto.ProductoRequestDto;
-import com.joanlica.TiendaAPI.dto.ProductoResponseDto;
+import com.joanlica.TiendaAPI.dto.producto.ProductoRequestDto;
+import com.joanlica.TiendaAPI.dto.producto.ProductoResponseDto;
 import com.joanlica.TiendaAPI.service.IProductoService;
 import io.swagger.v3.oas.annotations.Operation;
 import jakarta.validation.Valid;
@@ -16,18 +14,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/productos")
 public class ProductoController {
-    /* 1.
-    * CRUD de Producto
-    * POST: /productos/crear
-    * GET: /productos
-    * GET: /productos/{codigo_producto}
-    * DELETE: /productos/eliminar/{codigo_producto}
-    * PUT /productos/editar/{codigo_producto}
-    * */
 
-    /*4. Get /productos/falta_stock
-    * cantidad_dispobible < 5
-    * */
     private IProductoService productoService;
 
     public ProductoController(IProductoService productoService) {

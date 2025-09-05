@@ -1,4 +1,4 @@
-package com.joanlica.TiendaAPI.dto;
+package com.joanlica.TiendaAPI.dto.cliente;
 
 import jakarta.validation.constraints.NotBlank;
 

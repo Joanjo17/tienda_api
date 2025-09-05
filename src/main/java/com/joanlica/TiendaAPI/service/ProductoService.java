@@ -1,10 +1,12 @@
 package com.joanlica.TiendaAPI.service;
 
-import com.joanlica.TiendaAPI.dto.ProductoRequestDto;
-import com.joanlica.TiendaAPI.dto.ProductoResponseDto;
+import com.joanlica.TiendaAPI.dto.producto.ProductoRequestDto;
+import com.joanlica.TiendaAPI.dto.producto.ProductoResponseDto;
 import com.joanlica.TiendaAPI.exception.ResourceNotFoundException;
 import com.joanlica.TiendaAPI.mapper.ProductoMapper;
+import com.joanlica.TiendaAPI.model.ItemVenta;
 import com.joanlica.TiendaAPI.model.Producto;
+import com.joanlica.TiendaAPI.repository.IItemVentaRepository;
 import com.joanlica.TiendaAPI.repository.IProductoRepository;
 import org.springframework.stereotype.Service;
 
@@ -14,9 +16,11 @@ import java.util.List;
 public class ProductoService implements IProductoService{
 
     private final IProductoRepository productoRepository;
+    private final IItemVentaRepository itemVentaRepository;
 
-    public ProductoService(IProductoRepository productoRepository) {
+    public ProductoService(IProductoRepository productoRepository, IItemVentaRepository itemVentaRepository) {
         this.productoRepository = productoRepository;
+        this.itemVentaRepository = itemVentaRepository;
     }
 
     @Override
@@ -31,27 +35,34 @@ public class ProductoService implements IProductoService{
     }
 
     @Override
-    public Producto buscarClienteEntidadPorId(Long id) {
-        return productoRepository.findById(id)
-                .orElseThrow(()->new ResourceNotFoundException("No se encontró el producto con id "+id));
+    public Producto buscarProductoEntidadPorId(Long codigo_producto) {
+        return productoRepository.findById(codigo_producto)
+                .orElseThrow(()->new ResourceNotFoundException("No se encontró el producto con id "+codigo_producto));
     }
 
     @Override
-    public ProductoResponseDto buscarProductoPorId(Long id) {
-        Producto producto = this.buscarClienteEntidadPorId(id);
+    public ProductoResponseDto buscarProductoPorId(Long codigo_producto) {
+        Producto producto = this.buscarProductoEntidadPorId(codigo_producto);
         return ProductoMapper.toDto(producto);
     }
 
     @Override
-    public void eliminarProductoPorId(Long id) {
+    public void eliminarProductoPorId(Long codigo_producto) {
         // Primero comprobamos que esté presente y después lo eliminamos
-        this.buscarClienteEntidadPorId(id);
-        productoRepository.deleteById(id);
+        Producto producto = this.buscarProductoEntidadPorId(codigo_producto);
+
+        for (ItemVenta item : producto.getListaItemVenta()) {
+            item.setProducto(null);
+            // Guardamos el ItemVenta para que la base de datos lo actualice.
+            itemVentaRepository.save(item);
+        }
+
+        productoRepository.deleteById(codigo_producto);
     }
 
     @Override
-    public ProductoResponseDto editarProductoPorId(Long id, ProductoRequestDto productoNuevo) {
-        Producto producto = this.buscarClienteEntidadPorId(id);
+    public ProductoResponseDto editarProductoPorId(Long codigo_producto, ProductoRequestDto productoNuevo) {
+        Producto producto = this.buscarProductoEntidadPorId(codigo_producto);
 
         producto.setNombre(productoNuevo.nombre());
         producto.setMarca(productoNuevo.marca());

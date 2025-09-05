@@ -1,5 +1,6 @@
 package com.joanlica.TiendaAPI.model;
 
+
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -24,11 +25,10 @@ public class Venta {
     private Double total;
 
 
-    @ManyToMany
-    private List<Producto> listaProductos;
+    @OneToMany(mappedBy = "venta", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<ItemVenta> listaItemVenta;
 
     @ManyToOne
-    @JoinColumn(name="id_cliente",
-    referencedColumnName = "id_cliente")
+    @JoinColumn(name = "id_cliente", referencedColumnName = "id_cliente", nullable = true)
     private Cliente unCliente;
 }

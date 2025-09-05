@@ -1,4 +1,4 @@
-package com.joanlica.TiendaAPI.dto;
+package com.joanlica.TiendaAPI.dto.producto;
 
 public record ProductoResponseDto(
         Long codigo_producto,

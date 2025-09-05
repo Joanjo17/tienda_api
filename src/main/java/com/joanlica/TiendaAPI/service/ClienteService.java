@@ -1,11 +1,13 @@
 package com.joanlica.TiendaAPI.service;
 
-import com.joanlica.TiendaAPI.dto.ClienteRequestDto;
-import com.joanlica.TiendaAPI.dto.ClienteResponseDto;
+import com.joanlica.TiendaAPI.dto.cliente.ClienteRequestDto;
+import com.joanlica.TiendaAPI.dto.cliente.ClienteResponseDto;
 import com.joanlica.TiendaAPI.exception.ResourceNotFoundException;
 import com.joanlica.TiendaAPI.mapper.ClienteMapper;
 import com.joanlica.TiendaAPI.model.Cliente;
+import com.joanlica.TiendaAPI.model.Venta;
 import com.joanlica.TiendaAPI.repository.IClienteRepository;
+import com.joanlica.TiendaAPI.repository.IVentaRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -14,9 +16,12 @@ import java.util.List;
 public class ClienteService implements IClienteService{
 
     private final IClienteRepository clienteRepository;
+    private final IVentaRepository ventaRepository;
 
-    public ClienteService(IClienteRepository clienteRepository) {
+    public ClienteService(IClienteRepository clienteRepository,
+                          IVentaRepository ventaRepository) {
         this.clienteRepository = clienteRepository;
+        this.ventaRepository = ventaRepository;
     }
 
     @Override
@@ -44,9 +49,19 @@ public class ClienteService implements IClienteService{
 
     @Override
     public void eliminarClientePorId(Long id) {
-        // Primero comprobamos que exista, si no existe se informa, en caso que exista, se elimina.
-        this.buscarClienteEntidadPorId(id);
-        clienteRepository.deleteById(id);
+        // Primero comprobamos que exista, si no existe se informa, en caso que exista, se eliminará.
+        Cliente cliente = this.buscarClienteEntidadPorId(id);
+
+        // Desvincular todas las ventas del cliente
+        List<Venta> ventasDelCliente = ventaRepository.findAllByUnCliente(cliente);
+
+        ventasDelCliente.forEach(venta ->{
+            venta.setUnCliente(null);
+            ventaRepository.save(venta);
+        });
+
+        // Ahora que las ventas ya no lo referencian, se puede eliminar el cliente
+        clienteRepository.delete(cliente);
     }
 
     @Override

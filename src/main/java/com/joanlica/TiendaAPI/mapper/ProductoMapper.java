@@ -1,7 +1,7 @@
 package com.joanlica.TiendaAPI.mapper;
 
-import com.joanlica.TiendaAPI.dto.ProductoRequestDto;
-import com.joanlica.TiendaAPI.dto.ProductoResponseDto;
+import com.joanlica.TiendaAPI.dto.producto.ProductoRequestDto;
+import com.joanlica.TiendaAPI.dto.producto.ProductoResponseDto;
 import com.joanlica.TiendaAPI.model.Producto;
 
 import java.util.List;

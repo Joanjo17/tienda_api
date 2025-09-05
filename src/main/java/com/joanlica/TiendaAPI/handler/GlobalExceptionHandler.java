@@ -1,5 +1,6 @@
 package com.joanlica.TiendaAPI.handler;
 
+import com.joanlica.TiendaAPI.exception.InsufficientStockException;
 import com.joanlica.TiendaAPI.exception.ResourceNotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -8,6 +9,7 @@ import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
+import javax.naming.InsufficientResourcesException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -21,6 +23,13 @@ public class GlobalExceptionHandler {
         Map<String,Object> map = new HashMap<>();
         map.put("message",e.getMessage());
         return new ResponseEntity<>(map, HttpStatus.NOT_FOUND); //404
+    }
+
+    @ExceptionHandler(InsufficientStockException.class)
+    public ResponseEntity<Object> handleInsufficientResourcesException(InsufficientStockException e) {
+        Map<String,Object> map = new HashMap<>();
+        map.put("message",e.getMessage());
+        return new ResponseEntity<>(map, HttpStatus.BAD_REQUEST); //404
     }
 
     // Handler para las Validaciones

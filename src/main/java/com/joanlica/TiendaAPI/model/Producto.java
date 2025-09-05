@@ -5,6 +5,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -23,4 +25,7 @@ public class Producto {
     Double costo;
     @Column(nullable = false)
     Double cantidadDisponible;
+
+    @OneToMany(mappedBy = "producto")
+    private List<ItemVenta> listaItemVenta;
 }

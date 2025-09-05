@@ -1,7 +1,7 @@
 package com.joanlica.TiendaAPI.controller;
 
-import com.joanlica.TiendaAPI.dto.ClienteRequestDto;
-import com.joanlica.TiendaAPI.dto.ClienteResponseDto;
+import com.joanlica.TiendaAPI.dto.cliente.ClienteRequestDto;
+import com.joanlica.TiendaAPI.dto.cliente.ClienteResponseDto;
 import com.joanlica.TiendaAPI.service.ClienteService;
 import io.swagger.v3.oas.annotations.Operation;
 import jakarta.validation.Valid;

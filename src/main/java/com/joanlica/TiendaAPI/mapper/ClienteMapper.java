@@ -1,7 +1,8 @@
 package com.joanlica.TiendaAPI.mapper;
 
-import com.joanlica.TiendaAPI.dto.ClienteRequestDto;
-import com.joanlica.TiendaAPI.dto.ClienteResponseDto;
+import com.joanlica.TiendaAPI.dto.cliente.ClienteRequestDto;
+import com.joanlica.TiendaAPI.dto.cliente.ClienteResponseDto;
+import com.joanlica.TiendaAPI.dto.venta.ClienteVentaInfoDto;
 import com.joanlica.TiendaAPI.model.Cliente;
 
 import java.util.List;
@@ -26,5 +27,10 @@ public class ClienteMapper {
         return clientes.stream()
                 .map(ClienteMapper::toDto)
                 .collect(Collectors.toList());
+    }
+
+    public static ClienteVentaInfoDto toClienteVentaDto(Cliente cliente){
+        return new ClienteVentaInfoDto(cliente.getId_cliente(),
+                cliente.getNombre(), cliente.getApellido());
     }
 }
