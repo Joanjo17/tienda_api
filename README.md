@@ -128,4 +128,4 @@ Una vez que la aplicación esté en ejecución, puedes acceder a la documentaci�
 Puedes importar todos los endpoints de la API a Postman para realizar pruebas de manera sencilla.
 
 Descarga la colección en formato JSON desde este enlace:
-[Colección de Postman](https://github.com/Joanjo17/tienda_api/blob/main/postman_collection.json)
+[Colección de Postman](https://github.com/Joanjo17/tienda_api/blob/main/TiendaAPI.postman_collection.json)
