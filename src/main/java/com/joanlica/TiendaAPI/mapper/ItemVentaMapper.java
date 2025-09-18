@@ -9,7 +9,6 @@ import java.util.stream.Collectors;
 public class ItemVentaMapper {
 
     public static ItemVentaResponseDto toDto(ItemVenta itemVenta) {
-
         return new ItemVentaResponseDto(
                 itemVenta.getId(),
                 itemVenta.getProducto() != null ? itemVenta.getProducto().getNombre() : "Producto Eliminado",

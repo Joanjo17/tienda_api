@@ -1,6 +1,5 @@
 package com.joanlica.TiendaAPI.mapper;
 
-import com.joanlica.TiendaAPI.dto.venta.ClienteVentaInfoDto;
 import com.joanlica.TiendaAPI.dto.venta.VentaResponseDto;
 import com.joanlica.TiendaAPI.model.Venta;
 
@@ -13,8 +12,9 @@ public class VentaMapper {
         return new VentaResponseDto(venta.getCodigo_venta(),
                 venta.getFechaVenta(),venta.getTotal(),
                 ItemVentaMapper.toDtoList(venta.getListaItemVenta()),
-                                venta.getUnCliente() != null? ClienteMapper.toClienteVentaDto(
-                                        venta.getUnCliente()) : "Cliente no disponible");
+                                venta.getUnCliente() != null? ClienteMapper.toClienteVentaInfoDto(
+                                        venta.getUnCliente()) : "Cliente no disponible",
+                venta.getEstado().getEstado());
     }
 
     public static List<VentaResponseDto> toDtoList(List<Venta> ventas) {

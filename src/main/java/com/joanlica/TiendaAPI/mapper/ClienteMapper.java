@@ -14,7 +14,7 @@ public class ClienteMapper {
         Cliente cliente = new Cliente();
         cliente.setNombre(clienteNuevo.nombre());
         cliente.setApellido(clienteNuevo.apellido());
-        cliente.setDni( clienteNuevo.dni());
+        cliente.setDni(clienteNuevo.dni());
         return cliente;
     }
 
@@ -29,7 +29,7 @@ public class ClienteMapper {
                 .collect(Collectors.toList());
     }
 
-    public static ClienteVentaInfoDto toClienteVentaDto(Cliente cliente){
+    public static ClienteVentaInfoDto toClienteVentaInfoDto(Cliente cliente){
         return new ClienteVentaInfoDto(cliente.getId_cliente(),
                 cliente.getNombre(), cliente.getApellido());
     }

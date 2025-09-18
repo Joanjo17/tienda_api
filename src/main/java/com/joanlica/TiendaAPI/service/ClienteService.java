@@ -5,9 +5,7 @@ import com.joanlica.TiendaAPI.dto.cliente.ClienteResponseDto;
 import com.joanlica.TiendaAPI.exception.ResourceNotFoundException;
 import com.joanlica.TiendaAPI.mapper.ClienteMapper;
 import com.joanlica.TiendaAPI.model.Cliente;
-import com.joanlica.TiendaAPI.model.Venta;
 import com.joanlica.TiendaAPI.repository.IClienteRepository;
-import com.joanlica.TiendaAPI.repository.IVentaRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -16,12 +14,9 @@ import java.util.List;
 public class ClienteService implements IClienteService{
 
     private final IClienteRepository clienteRepository;
-    private final IVentaRepository ventaRepository;
 
-    public ClienteService(IClienteRepository clienteRepository,
-                          IVentaRepository ventaRepository) {
+    public ClienteService(IClienteRepository clienteRepository) {
         this.clienteRepository = clienteRepository;
-        this.ventaRepository = ventaRepository;
     }
 
     @Override
@@ -31,12 +26,17 @@ public class ClienteService implements IClienteService{
     }
 
     @Override
-    public List<ClienteResponseDto> listarClientes() {
+    public List<ClienteResponseDto> listarClientesActivos() {
         return ClienteMapper.toDtoList(clienteRepository.findAll());
     }
 
     @Override
-    public Cliente buscarClienteEntidadPorId(Long id){
+    public List<ClienteResponseDto> listarTodosLosClientes() {
+        return ClienteMapper.toDtoList(clienteRepository.findAllIncludingInactive());
+    }
+
+    private Cliente buscarClienteEntidadPorId(Long id){
+        // Solo para Clientes Activos.
         return clienteRepository.findById(id)
                 .orElseThrow(()-> new ResourceNotFoundException("No se encontró el cliente con el id "+id));
     }
@@ -48,20 +48,13 @@ public class ClienteService implements IClienteService{
     }
 
     @Override
-    public void eliminarClientePorId(Long id) {
-        // Primero comprobamos que exista, si no existe se informa, en caso que exista, se eliminará.
-        Cliente cliente = this.buscarClienteEntidadPorId(id);
+    public void cancelarClientePorId(Long id) {
+        // Primero comprobamos que exista.
+        this.buscarClienteEntidadPorId(id);
 
-        // Desvincular todas las ventas del cliente
-        List<Venta> ventasDelCliente = ventaRepository.findAllByUnCliente(cliente);
-
-        ventasDelCliente.forEach(venta ->{
-            venta.setUnCliente(null);
-            ventaRepository.save(venta);
-        });
-
-        // Ahora que las ventas ya no lo referencian, se puede eliminar el cliente
-        clienteRepository.delete(cliente);
+        // El deleteById es interceptado por @SoftDelete.
+        // Cambia la columna 'activo' a 'false' en vez de borrar la fila.
+        clienteRepository.deleteById(id);
     }
 
     @Override

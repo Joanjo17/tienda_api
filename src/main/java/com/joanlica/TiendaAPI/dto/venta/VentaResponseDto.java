@@ -8,5 +8,6 @@ public record VentaResponseDto(
          LocalDate fechaVenta,
          Double precioTotal,
          List<ItemVentaResponseDto> listaItemVenta,
-         Object cliente
+         Object cliente,
+         String estado
 ){}

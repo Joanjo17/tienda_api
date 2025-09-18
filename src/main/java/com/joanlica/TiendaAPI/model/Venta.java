@@ -2,15 +2,15 @@ package com.joanlica.TiendaAPI.model;
 
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.time.LocalDate;
 import java.util.List;
 
-@Data
-@NoArgsConstructor @AllArgsConstructor
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity
 public class Venta {
 
@@ -29,6 +29,10 @@ public class Venta {
     private List<ItemVenta> listaItemVenta;
 
     @ManyToOne
-    @JoinColumn(name = "id_cliente", referencedColumnName = "id_cliente", nullable = true)
+    @JoinColumn(name = "id_cliente", referencedColumnName = "id_cliente", nullable = false)
     private Cliente unCliente;
+
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
+    private EstadoVenta estado = EstadoVenta.COMPLETADA;
 }

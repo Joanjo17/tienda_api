@@ -1,12 +1,12 @@
 package com.joanlica.TiendaAPI.model;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
-@Data
-@NoArgsConstructor @AllArgsConstructor
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity
 public class ItemVenta {
     @Id
@@ -22,6 +22,6 @@ public class ItemVenta {
     private Venta venta;
 
     @ManyToOne
-    @JoinColumn(name = "codigo_producto", nullable = true)
+    @JoinColumn(name = "codigo_producto", nullable = false)
     private  Producto producto;
 }

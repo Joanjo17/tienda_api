@@ -5,11 +5,11 @@
 		"description": "Colección de Requests para probar la TiendaAPI.",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "47807271",
-		"_collection_link": "https://joanlica-4482134.postman.co/workspace/805feac0-b848-4750-86d9-54141d3be72c/collection/47807271-ca6e059e-b65d-42b7-a9e2-df47cf6fc3ab?action=share&source=collection_link&creator=47807271"
+		"_collection_link": "https://joanlica-4482134.postman.co/workspace/Joan-Lira's-Workspace~805feac0-b848-4750-86d9-54141d3be72c/collection/47807271-ca6e059e-b65d-42b7-a9e2-df47cf6fc3ab?action=share&source=collection_link&creator=47807271"
 	},
 	"item": [
 		{
-			"name": "Obtener Clientes",
+			"name": "Obtener Clientes Activos",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
 			},
@@ -39,14 +39,14 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "localhost:8080/clientes/1",
+					"raw": "localhost:8080/clientes/2",
 					"host": [
 						"localhost"
 					],
 					"port": "8080",
 					"path": [
 						"clientes",
-						"1"
+						"2"
 					]
 				}
 			},
@@ -59,7 +59,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"nombre\": \"Joan\",\r\n    \"apellido\": \"Lira\",\r\n    \"dni\":\"12345678J\"\r\n}",
+					"raw": "{\r\n    \"nombre\": \"Joan\",\r\n    \"apellido\": \"Lira\",\r\n    \"dni\":\"12314232J\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -67,14 +67,13 @@
 					}
 				},
 				"url": {
-					"raw": "localhost:8080/clientes/crear",
+					"raw": "localhost:8080/clientes",
 					"host": [
 						"localhost"
 					],
 					"port": "8080",
 					"path": [
-						"clientes",
-						"crear"
+						"clientes"
 					]
 				}
 			},
@@ -87,7 +86,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"nombre\": \"Leo\",\r\n    \"apellido\": \"Messi\",\r\n    \"dni\":\"23456789A\"\r\n}",
+					"raw": "{\r\n    \"nombre\": \"Leo\",\r\n    \"apellido\": \"Messi\",\r\n    \"dni\":\"12345678M\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -95,14 +94,13 @@
 					}
 				},
 				"url": {
-					"raw": "localhost:8080/clientes/editar/2",
+					"raw": "localhost:8080/clientes/2",
 					"host": [
 						"localhost"
 					],
 					"port": "8080",
 					"path": [
 						"clientes",
-						"editar",
 						"2"
 					]
 				}
@@ -110,27 +108,26 @@
 			"response": []
 		},
 		{
-			"name": "Eliminar Cliente id",
+			"name": "Desactivar Cliente id",
 			"request": {
 				"method": "DELETE",
 				"header": [],
 				"url": {
-					"raw": "localhost:8080/clientes/eliminar/1",
+					"raw": "localhost:8080/clientes/2",
 					"host": [
 						"localhost"
 					],
 					"port": "8080",
 					"path": [
 						"clientes",
-						"eliminar",
-						"1"
+						"2"
 					]
 				}
 			},
 			"response": []
 		},
 		{
-			"name": "Obtener Productos",
+			"name": "Obtener Productos Activos",
 			"request": {
 				"method": "GET",
 				"header": [],
@@ -153,14 +150,14 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "localhost:8080/productos/6",
+					"raw": "localhost:8080/productos/3",
 					"host": [
 						"localhost"
 					],
 					"port": "8080",
 					"path": [
 						"productos",
-						"6"
+						"3"
 					]
 				}
 			},
@@ -173,7 +170,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"nombre\": \"Refresco 1L\",\r\n    \"marca\": \"Coca-Cola\",\r\n    \"costo\": 1.20,\r\n    \"cantidad_disponible\": 15\r\n}",
+					"raw": "{\r\n    \"nombre\": \"Refresco 1L\",\r\n    \"marca\": \"Pepsi\",\r\n    \"costo\": 1.00,\r\n    \"cantidad_disponible\": 15\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -181,14 +178,13 @@
 					}
 				},
 				"url": {
-					"raw": "localhost:8080/productos/crear",
+					"raw": "localhost:8080/productos",
 					"host": [
 						"localhost"
 					],
 					"port": "8080",
 					"path": [
-						"productos",
-						"crear"
+						"productos"
 					]
 				}
 			},
@@ -201,7 +197,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"nombre\": \"Refresco 1L\",\r\n    \"marca\": \"Pepsi\",\r\n    \"costo\": 1.00,\r\n    \"cantidad_disponible\": 2\r\n}",
+					"raw": "{\r\n    \"nombre\": \"Refresco 1L\",\r\n    \"marca\": \"Pepsi\",\r\n    \"costo\": 1.00,\r\n    \"cantidad_disponible\": 19\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -209,14 +205,13 @@
 					}
 				},
 				"url": {
-					"raw": "localhost:8080/productos/editar/1",
+					"raw": "localhost:8080/productos/1",
 					"host": [
 						"localhost"
 					],
 					"port": "8080",
 					"path": [
 						"productos",
-						"editar",
 						"1"
 					]
 				}
@@ -224,7 +219,7 @@
 			"response": []
 		},
 		{
-			"name": "Eliminar Producto Codigo_Producto",
+			"name": "Desactivar Producto Codigo_Producto",
 			"request": {
 				"method": "DELETE",
 				"header": [],
@@ -238,15 +233,14 @@
 					}
 				},
 				"url": {
-					"raw": "localhost:8080/productos/eliminar/6",
+					"raw": "localhost:8080/productos/4",
 					"host": [
 						"localhost"
 					],
 					"port": "8080",
 					"path": [
 						"productos",
-						"eliminar",
-						"6"
+						"4"
 					]
 				}
 			},
@@ -277,6 +271,58 @@
 				"method": "GET",
 				"header": [],
 				"url": {
+					"raw": "localhost:8080/ventas?estado=completada",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"ventas"
+					],
+					"query": [
+						{
+							"key": "estado",
+							"value": "completada"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Obtener Ventas Codigo_Venta",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/ventas/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"ventas",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Añadir Venta",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id_cliente\": 1,\r\n    \"itemsVendidos\":[{\r\n            \"cantidad\": 1,\r\n            \"codigo_producto\": 2\r\n        }\r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
 					"raw": "localhost:8080/ventas",
 					"host": [
 						"localhost"
@@ -290,67 +336,19 @@
 			"response": []
 		},
 		{
-			"name": "Obtener Ventas Codigo_Venta",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "localhost:8080/ventas/4",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"ventas",
-						"4"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Añadir Venta",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n    \"id_cliente\": \"1\",\r\n    \"itemsVendidos\":[\r\n        {\r\n            \"cantidad\": \"1\",\r\n            \"codigo_producto\": \"6\"\r\n        }\r\n    ]\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "localhost:8080/ventas/crear",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"ventas",
-						"crear"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Eliminar Venta Codigo_Venta",
+			"name": "Cancelar Venta Codigo_Venta",
 			"request": {
 				"method": "DELETE",
 				"header": [],
 				"url": {
-					"raw": "localhost:8080/ventas/eliminar/2",
+					"raw": "localhost:8080/ventas/1",
 					"host": [
 						"localhost"
 					],
 					"port": "8080",
 					"path": [
 						"ventas",
-						"eliminar",
-						"2"
+						"1"
 					]
 				}
 			},
@@ -362,15 +360,15 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "localhost:8080/ventas/productos/1",
+					"raw": "localhost:8080/ventas/1/productos",
 					"host": [
 						"localhost"
 					],
 					"port": "8080",
 					"path": [
 						"ventas",
-						"productos",
-						"1"
+						"1",
+						"productos"
 					]
 				}
 			},
@@ -382,7 +380,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "localhost:8080/ventas/diario/2025-09-05",
+					"raw": "localhost:8080/ventas/diario/2025-09-10",
 					"host": [
 						"localhost"
 					],
@@ -390,7 +388,7 @@
 					"path": [
 						"ventas",
 						"diario",
-						"2025-09-05"
+						"2025-09-10"
 					]
 				}
 			},

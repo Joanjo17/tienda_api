@@ -1,16 +1,18 @@
 package com.joanlica.TiendaAPI.model;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
+import org.hibernate.annotations.SoftDelete;
+import org.hibernate.annotations.SoftDeleteType;
 
 import java.util.List;
 
-@Data
+@Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
+@SoftDelete(strategy = SoftDeleteType.ACTIVE, columnName = "activo")
 public class Producto {
 
     @Id
