@@ -6,6 +6,7 @@ import lombok.*;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Objects;
 
 @Getter
 @Setter
@@ -35,4 +36,16 @@ public class Venta {
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
     private EstadoVenta estado = EstadoVenta.COMPLETADA;
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+        Venta venta = (Venta) o;
+        return Objects.equals(codigo_venta, venta.codigo_venta);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hashCode(codigo_venta);
+    }
 }

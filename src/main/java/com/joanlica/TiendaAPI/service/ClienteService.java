@@ -2,15 +2,18 @@ package com.joanlica.TiendaAPI.service;
 
 import com.joanlica.TiendaAPI.dto.cliente.ClienteRequestDto;
 import com.joanlica.TiendaAPI.dto.cliente.ClienteResponseDto;
+import com.joanlica.TiendaAPI.exception.ClientAlreadyExistsException;
 import com.joanlica.TiendaAPI.exception.ResourceNotFoundException;
 import com.joanlica.TiendaAPI.mapper.ClienteMapper;
 import com.joanlica.TiendaAPI.model.Cliente;
 import com.joanlica.TiendaAPI.repository.IClienteRepository;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
 @Service
+@Transactional
 public class ClienteService implements IClienteService{
 
     private final IClienteRepository clienteRepository;
@@ -21,16 +24,19 @@ public class ClienteService implements IClienteService{
 
     @Override
     public ClienteResponseDto crearCliente(ClienteRequestDto clienteNuevo) {
+        if(clienteRepository.existePorDni(clienteNuevo.dni())) throw new ClientAlreadyExistsException("El cliente ya existe");
         Cliente cliente = clienteRepository.save(ClienteMapper.toEntity(clienteNuevo));
         return ClienteMapper.toDto(cliente);
     }
 
     @Override
+    @Transactional(readOnly = true)
     public List<ClienteResponseDto> listarClientesActivos() {
         return ClienteMapper.toDtoList(clienteRepository.findAll());
     }
 
     @Override
+    @Transactional(readOnly = true)
     public List<ClienteResponseDto> listarTodosLosClientes() {
         return ClienteMapper.toDtoList(clienteRepository.findAllIncludingInactive());
     }
@@ -42,12 +48,14 @@ public class ClienteService implements IClienteService{
     }
 
     @Override
+    @Transactional(readOnly = true)
     public ClienteResponseDto buscarClientePorId(Long id) {
         Cliente cliente = this.buscarClienteEntidadPorId(id);
         return ClienteMapper.toDto(cliente);
     }
 
     @Override
+    @Transactional(readOnly = true)
     public void cancelarClientePorId(Long id) {
         // Primero comprobamos que exista.
         this.buscarClienteEntidadPorId(id);

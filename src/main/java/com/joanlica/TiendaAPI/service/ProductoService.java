@@ -16,6 +16,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service
+@Transactional
 public class ProductoService implements IProductoService{
 
     private final IProductoRepository productoRepository;
@@ -31,6 +32,7 @@ public class ProductoService implements IProductoService{
     }
 
     @Override
+    @Transactional(readOnly = true)
     public List<ProductoResponseDto> listarProductosActivos() {
         return ProductoMapper.toDtoList(productoRepository.findAll());
     }
@@ -41,6 +43,7 @@ public class ProductoService implements IProductoService{
     }
 
     @Override
+    @Transactional(readOnly = true)
     public ProductoResponseDto buscarProductoPorId(Long codigo_producto) {
         Producto producto = this.buscarProductoEntidadPorId(codigo_producto);
         return ProductoMapper.toDto(producto);
@@ -70,12 +73,12 @@ public class ProductoService implements IProductoService{
     }
 
     @Override
+    @Transactional(readOnly = true)
     public List<ProductoResponseDto> listarProductosBajosStock(Double cantidad) {
         return ProductoMapper.toDtoList(productoRepository.findByCantidadDisponibleLessThan(cantidad));
     }
 
     @Override
-    @Transactional
     public List<Producto> validarYReducirStock(List<ItemVentaRequestsDto> listaItemVentaRequestsDto) {
         List<Producto> productos = new ArrayList<>();
         for(ItemVentaRequestsDto item : listaItemVentaRequestsDto){
@@ -91,7 +94,6 @@ public class ProductoService implements IProductoService{
     }
 
     @Override
-    @Transactional
     public void devolverStock(List<ItemVenta> listaItemVenta) {
         List<Producto> productos = new ArrayList<>();
         for (ItemVenta item : listaItemVenta) {
@@ -103,6 +105,7 @@ public class ProductoService implements IProductoService{
     }
 
     @Override
+    @Transactional(readOnly = true)
     public List<ProductoResponseDto> listarTodosLosProductos() {
         return ProductoMapper.toDtoList(productoRepository.findAllIncludingInactive());
     }

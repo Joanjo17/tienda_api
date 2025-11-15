@@ -1,5 +1,6 @@
 package com.joanlica.TiendaAPI.handler;
 
+import com.joanlica.TiendaAPI.exception.ClientAlreadyExistsException;
 import com.joanlica.TiendaAPI.exception.InsufficientStockException;
 import com.joanlica.TiendaAPI.exception.ResourceNotFoundException;
 import org.springframework.http.HttpStatus;
@@ -9,7 +10,6 @@ import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
-import javax.naming.InsufficientResourcesException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -30,6 +30,13 @@ public class GlobalExceptionHandler {
         Map<String,Object> map = new HashMap<>();
         map.put("message",e.getMessage());
         return new ResponseEntity<>(map, HttpStatus.BAD_REQUEST); //404
+    }
+
+    @ExceptionHandler(ClientAlreadyExistsException.class)
+    public ResponseEntity<Object> handleClientAlreadyExistsException(ClientAlreadyExistsException e){
+        Map<String,Object> map = new HashMap<>();
+        map.put("message",e.getMessage());
+        return new ResponseEntity<>(map, HttpStatus.CONFLICT); //409
     }
 
     // Handler para las Validaciones

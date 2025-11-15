@@ -3,6 +3,8 @@ package com.joanlica.TiendaAPI.model;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.Objects;
+
 @Getter
 @Setter
 @NoArgsConstructor
@@ -24,4 +26,16 @@ public class ItemVenta {
     @ManyToOne
     @JoinColumn(name = "codigo_producto", nullable = false)
     private  Producto producto;
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+        ItemVenta itemVenta = (ItemVenta) o;
+        return Objects.equals(id, itemVenta.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hashCode(id);
+    }
 }

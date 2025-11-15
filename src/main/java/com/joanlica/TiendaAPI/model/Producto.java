@@ -6,6 +6,7 @@ import org.hibernate.annotations.SoftDelete;
 import org.hibernate.annotations.SoftDeleteType;
 
 import java.util.List;
+import java.util.Objects;
 
 @Getter
 @Setter
@@ -30,4 +31,16 @@ public class Producto {
 
     @OneToMany(mappedBy = "producto")
     private List<ItemVenta> listaItemVenta;
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+        Producto producto = (Producto) o;
+        return Objects.equals(codigo_producto, producto.codigo_producto);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hashCode(codigo_producto);
+    }
 }
