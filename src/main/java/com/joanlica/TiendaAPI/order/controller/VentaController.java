@@ -31,7 +31,7 @@ import java.util.List;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/api/v1/ventas")
-@Tag(name = "4. Ventas", description = "Endpoints para crear y consultar ventas.")
+@Tag(name = "Ventas", description = "Endpoints para crear y consultar ventas.")
 @SecurityRequirement(name = "bearerAuth") // Todas las rutas de ventas requieren autenticación
 public class VentaController {
 

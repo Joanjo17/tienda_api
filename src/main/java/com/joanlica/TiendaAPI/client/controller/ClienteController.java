@@ -22,7 +22,7 @@ import java.security.Principal;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/api/v1/clientes")
-@Tag(name = "2. Clientes", description = "Endpoints para la gestión de perfiles de clientes. " +
+@Tag(name = "Clientes", description = "Endpoints para la gestión de perfiles de clientes. " +
         "La mayoría requieren rol de ADMIN.")
 // Añadimos el requisito de seguridad (el candado) a todos los endpoints de este controlador
 @SecurityRequirement(name = "bearerAuth")

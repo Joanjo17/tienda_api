@@ -24,7 +24,7 @@ import java.net.URI;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/api/v1/productos")
-@Tag(name = "3. Productos", description = "Endpoints para la gestión del inventario de productos.")
+@Tag(name = "Productos", description = "Endpoints para la gestión del inventario de productos.")
 public class ProductoController {
 
     private final ProductoService productoService;
@@ -32,7 +32,6 @@ public class ProductoController {
     @Operation(
             summary = "Crear un nuevo producto (ADMIN)",
             description = "Crea un nuevo producto en la base de datos. Requiere rol de ADMIN.",
-            // Usamos tu truco para el RequestBody
             requestBody = @io.swagger.v3.oas.annotations.parameters.RequestBody(
                     required = true,
                     description = "Datos del nuevo producto",

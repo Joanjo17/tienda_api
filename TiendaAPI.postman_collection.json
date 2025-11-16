@@ -9,390 +9,724 @@
 	},
 	"item": [
 		{
-			"name": "Obtener Clientes Activos",
-			"protocolProfileBehavior": {
-				"disableBodyPruning": true
-			},
-			"request": {
-				"method": "GET",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n     \"id_duenio\" : 1, \r\n     \"dni\": \"12345678\",\r\n     \"nombre\" : \"Bjorn\",\r\n     \"apellido\" : \"Iron Side\",\r\n     \"numTelefono\" : \"15442356\"\r\n    \r\n}"
-				},
-				"url": {
-					"raw": "localhost:8080/clientes",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"clientes"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Obtener Cliente Id",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "localhost:8080/clientes/2",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"clientes",
-						"2"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Añadir Cliente",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n    \"nombre\": \"Joan\",\r\n    \"apellido\": \"Lira\",\r\n    \"dni\":\"12314232J\"\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "localhost:8080/clientes",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"clientes"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Editar Cliente",
-			"request": {
-				"method": "PUT",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n    \"nombre\": \"Leo\",\r\n    \"apellido\": \"Messi\",\r\n    \"dni\":\"12345678M\"\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "localhost:8080/clientes/2",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"clientes",
-						"2"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Desactivar Cliente id",
-			"request": {
-				"method": "DELETE",
-				"header": [],
-				"url": {
-					"raw": "localhost:8080/clientes/2",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"clientes",
-						"2"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Obtener Productos Activos",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "localhost:8080/productos",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"productos"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Obtener Producto Codigo_Producto",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "localhost:8080/productos/3",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"productos",
-						"3"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Añadir Producto",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n    \"nombre\": \"Refresco 1L\",\r\n    \"marca\": \"Pepsi\",\r\n    \"costo\": 1.00,\r\n    \"cantidad_disponible\": 15\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "localhost:8080/productos",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"productos"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Editar Producto",
-			"request": {
-				"method": "PUT",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n    \"nombre\": \"Refresco 1L\",\r\n    \"marca\": \"Pepsi\",\r\n    \"costo\": 1.00,\r\n    \"cantidad_disponible\": 19\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "localhost:8080/productos/1",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"productos",
-						"1"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Desactivar Producto Codigo_Producto",
-			"request": {
-				"method": "DELETE",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "localhost:8080/productos/4",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"productos",
-						"4"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Obtener Productos Bajo Stock",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "localhost:8080/productos/falta_stock",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"productos",
-						"falta_stock"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Obtener Ventas",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "localhost:8080/ventas?estado=completada",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"ventas"
-					],
-					"query": [
+			"name": "Authentication",
+			"item": [
+				{
+					"name": "Role",
+					"item": [
 						{
-							"key": "estado",
-							"value": "completada"
+							"name": "Get Roles",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJ0aWVuZGFfYXBpX2dlbmVyYXRvciIsInN1YiI6IkpvYW4wNCIsImF1dGhvcml0aWVzIjpbIlJPTEVfQURNSU4iXSwiaWF0IjoxNzYzMjYzMTU1LCJleHAiOjE3NjMyNjY3NTUsImp0aSI6IjYwNmMyZGFiLTgzNWEtNDYyMi04OGVmLTFmMDUwZGUzZDI0NSIsIm5iZiI6MTc2MzI2MzE1NX0.x4jeoiS3Tscu_lVoPQiE1EAucWxXcR2HeGZOIsAvaec",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/api/v1/roles",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"roles"
+									]
+								}
+							},
+							"response": []
 						}
 					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Obtener Ventas Codigo_Venta",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "localhost:8080/ventas/1",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"ventas",
-						"1"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Añadir Venta",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n    \"id_cliente\": 1,\r\n    \"itemsVendidos\":[{\r\n            \"cantidad\": 1,\r\n            \"codigo_producto\": 2\r\n        }\r\n    ]\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
 				},
-				"url": {
-					"raw": "localhost:8080/ventas",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"ventas"
-					]
+				{
+					"name": "Register User",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\" : \"Joan04\", \r\n    \"password\": \"Contra1!\",\r\n    \"roleIds\" : [1],\r\n    \"nombre\" : \"Joan Josep\",\r\n    \"apellido\" : \"Lira Casanova\",\r\n    \"dni\": \"12345678A\"\r\n    \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/api/v1/auth/register",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"auth",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login User",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\":\"Joan04\",\r\n    \"password\":\"Contra1!\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/api/v1/auth/login",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
 				}
-			},
-			"response": []
+			]
 		},
 		{
-			"name": "Cancelar Venta Codigo_Venta",
-			"request": {
-				"method": "DELETE",
-				"header": [],
-				"url": {
-					"raw": "localhost:8080/ventas/1",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"ventas",
-						"1"
-					]
+			"name": "Cliente",
+			"item": [
+				{
+					"name": "Obtener Clientes Activos",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJ0aWVuZGFfYXBpX2dlbmVyYXRvciIsInN1YiI6IkpvYW4wNCIsImF1dGhvcml0aWVzIjpbIlJPTEVfQURNSU4iXSwiaWF0IjoxNzYzMjYzMTU1LCJleHAiOjE3NjMyNjY3NTUsImp0aSI6IjYwNmMyZGFiLTgzNWEtNDYyMi04OGVmLTFmMDUwZGUzZDI0NSIsIm5iZiI6MTc2MzI2MzE1NX0.x4jeoiS3Tscu_lVoPQiE1EAucWxXcR2HeGZOIsAvaec",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/v1/clientes",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"clientes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Obtener Clientes ALL",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJ0aWVuZGFfYXBpX2dlbmVyYXRvciIsInN1YiI6IkpvYW4wNCIsImF1dGhvcml0aWVzIjpbIlJPTEVfQURNSU4iXSwiaWF0IjoxNzYzMjYzMTU1LCJleHAiOjE3NjMyNjY3NTUsImp0aSI6IjYwNmMyZGFiLTgzNWEtNDYyMi04OGVmLTFmMDUwZGUzZDI0NSIsIm5iZiI6MTc2MzI2MzE1NX0.x4jeoiS3Tscu_lVoPQiE1EAucWxXcR2HeGZOIsAvaec",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/v1/clientes/all",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"clientes",
+								"all"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Obtener Cliente Id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJ0aWVuZGFfYXBpX2dlbmVyYXRvciIsInN1YiI6IkpvYW4wNCIsImF1dGhvcml0aWVzIjpbIlJPTEVfQURNSU4iXSwiaWF0IjoxNzYzMjYzMTU1LCJleHAiOjE3NjMyNjY3NTUsImp0aSI6IjYwNmMyZGFiLTgzNWEtNDYyMi04OGVmLTFmMDUwZGUzZDI0NSIsIm5iZiI6MTc2MzI2MzE1NX0.x4jeoiS3Tscu_lVoPQiE1EAucWxXcR2HeGZOIsAvaec",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/v1/clientes/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"clientes",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Desactivar Cliente id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJ0aWVuZGFfYXBpX2dlbmVyYXRvciIsInN1YiI6IkpvYW4wNCIsImF1dGhvcml0aWVzIjpbIlJPTEVfQURNSU4iXSwiaWF0IjoxNzYzMjYzMTU1LCJleHAiOjE3NjMyNjY3NTUsImp0aSI6IjYwNmMyZGFiLTgzNWEtNDYyMi04OGVmLTFmMDUwZGUzZDI0NSIsIm5iZiI6MTc2MzI2MzE1NX0.x4jeoiS3Tscu_lVoPQiE1EAucWxXcR2HeGZOIsAvaec",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/v1/clientes/2",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"clientes",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Editar Cliente",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nombre\": \"Leo\",\r\n    \"apellido\": \"Messi\",\r\n    \"dni\":\"12345678M\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/api/v1/clientes/2",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"clientes",
+								"2"
+							]
+						}
+					},
+					"response": []
 				}
-			},
-			"response": []
+			]
 		},
 		{
-			"name": "Obtener Productos de una Venta",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "localhost:8080/ventas/1/productos",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"ventas",
-						"1",
-						"productos"
-					]
+			"name": "Productos",
+			"item": [
+				{
+					"name": "Añadir Producto",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJ0aWVuZGFfYXBpX2dlbmVyYXRvciIsInN1YiI6IkpvYW4wNCIsImF1dGhvcml0aWVzIjpbIlJPTEVfQURNSU4iXSwiaWF0IjoxNzYzMjYzMTU1LCJleHAiOjE3NjMyNjY3NTUsImp0aSI6IjYwNmMyZGFiLTgzNWEtNDYyMi04OGVmLTFmMDUwZGUzZDI0NSIsIm5iZiI6MTc2MzI2MzE1NX0.x4jeoiS3Tscu_lVoPQiE1EAucWxXcR2HeGZOIsAvaec",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nombre\": \"Refresco 2L\",\r\n    \"marca\": \"Coca Cola\",\r\n    \"costo\": 1.30,\r\n    \"cantidad_disponible\": 10\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/api/v1/productos",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"productos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Obtener Productos Activos",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJ0aWVuZGFfYXBpX2dlbmVyYXRvciIsInN1YiI6IkpvYW4wNCIsImF1dGhvcml0aWVzIjpbIlJPTEVfQURNSU4iXSwiaWF0IjoxNzYzMjYzMTU1LCJleHAiOjE3NjMyNjY3NTUsImp0aSI6IjYwNmMyZGFiLTgzNWEtNDYyMi04OGVmLTFmMDUwZGUzZDI0NSIsIm5iZiI6MTc2MzI2MzE1NX0.x4jeoiS3Tscu_lVoPQiE1EAucWxXcR2HeGZOIsAvaec",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/v1/productos",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"productos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Obtener Productos All",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJ0aWVuZGFfYXBpX2dlbmVyYXRvciIsInN1YiI6IkpvYW4wNCIsImF1dGhvcml0aWVzIjpbIlJPTEVfQURNSU4iXSwiaWF0IjoxNzYzMjYzMTU1LCJleHAiOjE3NjMyNjY3NTUsImp0aSI6IjYwNmMyZGFiLTgzNWEtNDYyMi04OGVmLTFmMDUwZGUzZDI0NSIsIm5iZiI6MTc2MzI2MzE1NX0.x4jeoiS3Tscu_lVoPQiE1EAucWxXcR2HeGZOIsAvaec",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/v1/productos/all",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"productos",
+								"all"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Obtener Producto Codigo_Producto",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJ0aWVuZGFfYXBpX2dlbmVyYXRvciIsInN1YiI6IkpvYW4wNCIsImF1dGhvcml0aWVzIjpbIlJPTEVfQURNSU4iXSwiaWF0IjoxNzYzMjYzMTU1LCJleHAiOjE3NjMyNjY3NTUsImp0aSI6IjYwNmMyZGFiLTgzNWEtNDYyMi04OGVmLTFmMDUwZGUzZDI0NSIsIm5iZiI6MTc2MzI2MzE1NX0.x4jeoiS3Tscu_lVoPQiE1EAucWxXcR2HeGZOIsAvaec",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/v1/productos/3",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"productos",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Desactivar Producto Codigo_Producto",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJ0aWVuZGFfYXBpX2dlbmVyYXRvciIsInN1YiI6IkpvYW4wNCIsImF1dGhvcml0aWVzIjpbIlJPTEVfQURNSU4iXSwiaWF0IjoxNzYzMjYzMTU1LCJleHAiOjE3NjMyNjY3NTUsImp0aSI6IjYwNmMyZGFiLTgzNWEtNDYyMi04OGVmLTFmMDUwZGUzZDI0NSIsIm5iZiI6MTc2MzI2MzE1NX0.x4jeoiS3Tscu_lVoPQiE1EAucWxXcR2HeGZOIsAvaec",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/api/v1/productos/2",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"productos",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Editar Producto",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJ0aWVuZGFfYXBpX2dlbmVyYXRvciIsInN1YiI6IkpvYW4wNCIsImF1dGhvcml0aWVzIjpbIlJPTEVfQURNSU4iXSwiaWF0IjoxNzYzMjYzMTU1LCJleHAiOjE3NjMyNjY3NTUsImp0aSI6IjYwNmMyZGFiLTgzNWEtNDYyMi04OGVmLTFmMDUwZGUzZDI0NSIsIm5iZiI6MTc2MzI2MzE1NX0.x4jeoiS3Tscu_lVoPQiE1EAucWxXcR2HeGZOIsAvaec",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nombre\": \"Refresco 1L\",\r\n    \"marca\": \"Coca Cola\",\r\n    \"costo\": 1.35,\r\n    \"cantidad_disponible\": 9\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/api/v1/productos/2",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"productos",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Obtener Productos Bajo Stock",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJ0aWVuZGFfYXBpX2dlbmVyYXRvciIsInN1YiI6IkpvYW4wNCIsImF1dGhvcml0aWVzIjpbIlJPTEVfQURNSU4iXSwiaWF0IjoxNzYzMjYzMTU1LCJleHAiOjE3NjMyNjY3NTUsImp0aSI6IjYwNmMyZGFiLTgzNWEtNDYyMi04OGVmLTFmMDUwZGUzZDI0NSIsIm5iZiI6MTc2MzI2MzE1NX0.x4jeoiS3Tscu_lVoPQiE1EAucWxXcR2HeGZOIsAvaec",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/v1/productos/falta_stock?cantidad=10",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"productos",
+								"falta_stock"
+							],
+							"query": [
+								{
+									"key": "cantidad",
+									"value": "10"
+								}
+							]
+						}
+					},
+					"response": []
 				}
-			},
-			"response": []
+			]
 		},
 		{
-			"name": "Obtener Info Ventas Diarias",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "localhost:8080/ventas/diario/2025-09-10",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"ventas",
-						"diario",
-						"2025-09-10"
-					]
+			"name": "Ventas",
+			"item": [
+				{
+					"name": "Añadir Venta",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJ0aWVuZGFfYXBpX2dlbmVyYXRvciIsInN1YiI6IkpvYW4wNCIsImF1dGhvcml0aWVzIjpbIlJPTEVfQURNSU4iXSwiaWF0IjoxNzYzMjYzMTU1LCJleHAiOjE3NjMyNjY3NTUsImp0aSI6IjYwNmMyZGFiLTgzNWEtNDYyMi04OGVmLTFmMDUwZGUzZDI0NSIsIm5iZiI6MTc2MzI2MzE1NX0.x4jeoiS3Tscu_lVoPQiE1EAucWxXcR2HeGZOIsAvaec",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id_cliente\": 1,\r\n    \"itemsVendidos\":[{\r\n            \"codigo_producto\": 1,\r\n            \"cantidad\": 5\r\n        }\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/api/v1/ventas",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"ventas"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Obtener Ventas",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJ0aWVuZGFfYXBpX2dlbmVyYXRvciIsInN1YiI6IkpvYW4wNCIsImF1dGhvcml0aWVzIjpbIlJPTEVfQURNSU4iXSwiaWF0IjoxNzYzMjYzMTU1LCJleHAiOjE3NjMyNjY3NTUsImp0aSI6IjYwNmMyZGFiLTgzNWEtNDYyMi04OGVmLTFmMDUwZGUzZDI0NSIsIm5iZiI6MTc2MzI2MzE1NX0.x4jeoiS3Tscu_lVoPQiE1EAucWxXcR2HeGZOIsAvaec",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/v1/ventas?estado=completada",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"ventas"
+							],
+							"query": [
+								{
+									"key": "estado",
+									"value": "completada"
+								}
+							]
+						},
+						"description": "El estado de una venta puede tener dos valores, \"completada\" y \"cancelada\".  \nEn el caso de no indicar el estado en la URL, se recibiran ventas tanto completadas como canceladas."
+					},
+					"response": []
+				},
+				{
+					"name": "Obtener Ventas Codigo_Venta",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJ0aWVuZGFfYXBpX2dlbmVyYXRvciIsInN1YiI6IkpvYW4wNCIsImF1dGhvcml0aWVzIjpbIlJPTEVfQURNSU4iXSwiaWF0IjoxNzYzMjYzMTU1LCJleHAiOjE3NjMyNjY3NTUsImp0aSI6IjYwNmMyZGFiLTgzNWEtNDYyMi04OGVmLTFmMDUwZGUzZDI0NSIsIm5iZiI6MTc2MzI2MzE1NX0.x4jeoiS3Tscu_lVoPQiE1EAucWxXcR2HeGZOIsAvaec",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/v1/ventas/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"ventas",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Cancelar Venta Codigo_Venta",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJ0aWVuZGFfYXBpX2dlbmVyYXRvciIsInN1YiI6IkpvYW4wNCIsImF1dGhvcml0aWVzIjpbIlJPTEVfQURNSU4iXSwiaWF0IjoxNzYzMjYzMTU1LCJleHAiOjE3NjMyNjY3NTUsImp0aSI6IjYwNmMyZGFiLTgzNWEtNDYyMi04OGVmLTFmMDUwZGUzZDI0NSIsIm5iZiI6MTc2MzI2MzE1NX0.x4jeoiS3Tscu_lVoPQiE1EAucWxXcR2HeGZOIsAvaec",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/v1/ventas/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"ventas",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Obtener Productos de una Venta",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/v1/ventas/1/productos",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"ventas",
+								"1",
+								"productos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Obtener Info Ventas Diarias",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/v1/ventas/diario/2025-09-10",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"ventas",
+								"diario",
+								"2025-09-10"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Obtener Mayor Venta",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/v1/ventas/mayor_venta",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"ventas",
+								"mayor_venta"
+							]
+						}
+					},
+					"response": []
 				}
-			},
-			"response": []
+			]
 		}
 	]
 }

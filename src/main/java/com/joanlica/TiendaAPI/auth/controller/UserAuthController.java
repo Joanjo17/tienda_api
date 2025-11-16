@@ -24,7 +24,7 @@ import java.net.URI;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/api/v1/auth")
-@Tag(name = "1. Autenticación", description = "Endpoints para el registro y login de usuarios.")
+@Tag(name = "Autenticación", description = "Endpoints para el registro y login de usuarios.")
 public class UserAuthController {
 
     private final UserAuthService userAuthService;
