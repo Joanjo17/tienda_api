@@ -1,0 +1,57 @@
+services:
+  # Servicio de la Base de Datos MySQL
+  mysql:
+    image: 'mysql:8.2.0'
+    environment:
+      - MYSQL_DATABASE=${DB_NAME}
+      - MYSQL_ROOT_PASSWORD=${DB_ROOT_PASSWORD}
+      - MYSQL_USER=${DB_USER}
+      - MYSQL_PASSWORD=${DB_PASSWORD}
+    ports:
+      - '3307:3306'
+    volumes:
+      - mysql_data:/var/lib/mysql
+    # Healthcheck para MySQL
+    healthcheck:
+      test: [ "CMD", "mysqladmin" ,"ping", "-h", "localhost", "-u", "root", "-proot" ]
+      timeout: 10s
+      retries: 10
+      start_period: 20s
+
+  # Servicio de la API de Spring Boot
+  tienda_api:
+    build: .
+    environment:
+      - DB_URL=jdbc:mysql://mysql:3306/${DB_NAME}?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true
+      - DB_USER=${DB_USER}
+      - DB_PASSWORD=${DB_PASSWORD}
+      # CORS
+      - APP_CORS_ORIGINS=${APP_CORS_ORIGINS}
+      # JWT
+      - PRIVATE_KEY=${PRIVATE_KEY}
+      - USER_GENERATOR=${USER_GENERATOR}
+      - TTL_SECONDS=${TTL_SECONDS}
+      # Initializer
+      - ADMIN_USERNAME=${ADMIN_USERNAME}
+      - ADMIN_PASSWORD=${ADMIN_PASSWORD}
+    ports:
+      - '8080:8080'
+    depends_on:
+      mysql:
+        condition: service_healthy
+
+  # Servicio phpMyAdmin
+  phpmyadmin:
+    image: 'phpmyadmin:latest'
+    links:
+      - mysql
+    environment:
+      - PMA_HOST=mysql
+      - PMA_PORT=3306
+    ports:
+      - '8081:80'
+    depends_on:
+      - mysql
+
+volumes:
+  mysql_data:
