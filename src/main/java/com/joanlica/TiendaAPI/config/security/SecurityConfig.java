@@ -47,14 +47,14 @@ public class SecurityConfig {
                 // 1. Aplica la configuración CORS primero
                 .cors(Customizer.withDefaults())
                 .csrf(AbstractHttpConfigurer::disable)
-                .httpBasic(AbstractHttpConfigurer::disable)   // ← API JWT, no usa basic auth
-                .formLogin(AbstractHttpConfigurer::disable)   // ← API JWT, no usa esto tampoco
+                .httpBasic(AbstractHttpConfigurer::disable)   // ← No usamos esto
+                .formLogin(AbstractHttpConfigurer::disable)   // ← No usamos esto
                 .sessionManagement(sm -> sm.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authenticationProvider(authenticationProvider())
                 .authorizeHttpRequests(reg -> reg
                         .requestMatchers("/v3/api-docs/**", "/swagger-ui/**", "/swagger-ui.html").permitAll()
                         .requestMatchers(HttpMethod.OPTIONS, "/**").permitAll()
-
+                        // Para Auth
                         .requestMatchers(HttpMethod.POST, "/api/v1/auth/register", "/api/v1/auth/login").permitAll()
                         .requestMatchers("/api/v1/roles/**").hasAnyRole("ADMIN")
                         // Para Clientes
