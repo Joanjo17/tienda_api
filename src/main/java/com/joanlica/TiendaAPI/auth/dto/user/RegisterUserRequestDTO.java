@@ -2,11 +2,8 @@ package com.joanlica.TiendaAPI.auth.dto.user;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
-
-import java.util.Set;
 
 public record RegisterUserRequestDTO(
         @Schema(
@@ -32,7 +29,7 @@ public record RegisterUserRequestDTO(
         @Pattern(regexp = "^(?=.*[A-Za-z])(?=.*\\d)(?=.*[^A-Za-z\\d]).+$",
                 message = "La contraseña debe tener al menos una letra, un número y un símbolo")
         String password,
-
+        /*
         @Schema(
                 description = "Lista de IDs de los roles para el nuevo usuario. (Ej: 1 para USER)",
                 example = "[1]",
@@ -40,7 +37,7 @@ public record RegisterUserRequestDTO(
         )
         @NotEmpty(message = "Debe asignarse al menos un rol")
         Set<Long> roleIds,
-
+        */
         @Schema(
                 description = "Nombre(s) de la persona que se registra.",
                 example = "Joan Josep",

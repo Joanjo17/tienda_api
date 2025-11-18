@@ -23,7 +23,6 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.HashSet;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -48,10 +47,12 @@ public class UserAuthServiceImpl implements UserAuthService {
         }
 
         // Mapear DTO a entidad, encriptar la contraseña y guardar el usuario
-        var roles = new HashSet<>(roleRepository.findAllById(registerUserRequestDTO.roleIds()));
+        var roles = Set.of(roleRepository.findByRoleName("USER")   // todos los registrados serán USERs
+                .orElseThrow(() -> new RoleNotFoundException("Some roles not found")));
+        /*
         if (roles.size() != registerUserRequestDTO.roleIds().size())
             throw new RoleNotFoundException("Some roles not found");
-
+        */
         //Comprobamos que no exista un cliente ya creado con el mismo DNI
         if (clienteRepository.countPorDni(registerUserRequestDTO.dni()) > 0)
             throw new ClientAlreadyExistsException("El cliente ya existe");
